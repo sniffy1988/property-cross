@@ -8,6 +8,8 @@ import { GithubContributorService } from '../app/components/githubContributor/gi
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
+import {PropertyController} from  '../app/property/property.controller';
+import GoComponent from '../app/components/go/go.component';
 
 import { NestoriaAPI } from '../app/components/nestoriaAPI/nestoria.service';
 
@@ -21,5 +23,7 @@ angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitiz
   .service('webDevTec', WebDevTecService)
   .service('NestoriaAPI', NestoriaAPI)
   .controller('MainController', MainController)
+  .controller('PropertyController', PropertyController)
   .directive('acmeNavbar', NavbarDirective)
-  .directive('acmeMalarkey', MalarkeyDirective);
+  .directive('acmeMalarkey', MalarkeyDirective)
+  .component('acmeGo', GoComponent);
