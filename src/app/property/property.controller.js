@@ -1,6 +1,8 @@
 export class PropertyController {
-  constructor(){
+  constructor($scope, $log){
     'ngInject';
-    this.creationDate = 1458749947546;
+    $scope.$on('recievedData', function (event, data) {
+      $log.debug(event);
+    });
   }
 }

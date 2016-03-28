@@ -1,11 +1,13 @@
 class goController {
   search(query) {
     this.logger.debug(query);
+    this.scope.$emit('recievedData');
   }
 
-  constructor($log) {
+  constructor($log, $scope) {
     'ngInject';
     this.logger = $log;
+    this.scope = $scope;
   }
 }
 let GoComponent = {
