@@ -1,8 +1,14 @@
 export class PropertyController {
-  constructor($scope, $log){
+  constructor($scope) {
     'ngInject';
-    $scope.$on('recievedData', function (event, data) {
-      $log.debug(event);
-    });
+    let vm = this;
+    vm.search = '';
+    $scope.$on('recievedData', _initModel);
+    function _initModel() {
+      vm.search = '';
+    }
   }
+
+
+
 }
