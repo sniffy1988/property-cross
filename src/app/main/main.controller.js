@@ -1,5 +1,5 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr) {
+  constructor ($timeout, webDevTec, toastr, NestoriaAPI, $log, $rootScope, $state) {
     'ngInject';
 
     this.awesomeThings = [];
@@ -7,9 +7,27 @@ export class MainController {
     this.creationDate = 1458749947546;
     this.toastr = toastr;
 
+    this.locations = [];
     this.activate($timeout, webDevTec);
-  }
 
+    this.search = function(text) {
+      $log.debug('search ' + text);
+      NestoriaAPI.get(text)
+        .then( response => {
+          $log.debug(response);
+          // leeds, london
+          if(response.type === 'listings') {
+            $rootScope.listings = response.data;
+            //$state.go('home')
+          } else {
+          // lee
+            this.locations = response.data;
+          }
+        }).catch((res) => {
+          $log.error(res);
+        });
+    };
+  }
   activate($timeout, webDevTec) {
     this.getWebDevTec(webDevTec);
     $timeout(() => {

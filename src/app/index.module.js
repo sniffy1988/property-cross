@@ -9,6 +9,8 @@ import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service'
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 
+import { NestoriaAPI } from '../app/components/nestoriaAPI/nestoria.service';
+
 angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'toastr'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
@@ -17,6 +19,7 @@ angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitiz
   .run(runBlock)
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
+  .service('NestoriaAPI', NestoriaAPI)
   .controller('MainController', MainController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);
