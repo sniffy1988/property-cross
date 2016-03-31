@@ -12,7 +12,13 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl : 'app/property/property.html',
       controller: "PropertyController",
       controllerAs: 'property'
-    });
+    })
+  .state('houses', {
+    url: '/houses',
+    templateUrl: 'app/houses/houses.html',
+    controller: 'HousesController',
+    controllerAs: 'houses'
+  });
 
   $urlRouterProvider.otherwise('/');
 }

@@ -10,6 +10,7 @@ import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 import {PropertyController} from  '../app/property/property.controller';
 import GoComponent from '../app/components/go/go.component';
+import {HousesController} from '../app/houses/houses.controller';
 
 import { NestoriaAPI } from '../app/components/nestoriaAPI/nestoria.service';
 
@@ -24,6 +25,7 @@ angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitiz
   .service('NestoriaAPI', NestoriaAPI)
   .controller('MainController', MainController)
   .controller('PropertyController', PropertyController)
+  .controller('HousesController', HousesController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective)
   .component('acmeGo', GoComponent);
