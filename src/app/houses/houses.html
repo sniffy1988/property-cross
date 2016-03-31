@@ -1,1 +1,22 @@
-<p ng-if="houses.list.length"><code>{{houses.list | json}}</code></p>
+<div layout="vertical" layout-fill>
+  <style>
+    acme-house {
+      width: 25%;
+    }
+    .layout-row {
+      flex-wrap: wrap;
+    }
+  </style>
+    <header>
+      <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </header>
+
+    <section class="jumbotron">
+      <md-content class="md-padding" layout-xs="column" layout="column">
+        <div flex-xs flex-gt-xs="50" layout="row">
+          <acme-house ng-repeat="item in houses.list" house="item"></acme-house>
+        </div>
+      </md-content>
+    </section>
+
+</div>

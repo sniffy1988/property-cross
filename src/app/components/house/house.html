@@ -1,0 +1,26 @@
+<md-card>
+  <md-card-title>
+
+    <md-card-title-media>
+      <div class="md-media-lg card-media">
+        <img ng-src="{{vm.house.img_url}}">
+      </div>
+    </md-card-title-media>
+  </md-card-title>
+  <md-card-content>
+    <md-card-title-text>
+      <span class="md-headline">{{vm.house.title}} | {{vm.house.property_type}}</span>
+    </md-card-title-text>
+    <p>
+      Bathrooms: {{vm.house.bathroom_number || 0}}
+    </p>
+    <p>
+      Bedrooms: {{vm.house.bedroom_number || 0}}
+    </p>
+    <p>
+      Car spaces: {{vm.house.car_spaces || 0}}
+    </p>
+    <p>{{vm.house.summary}}</p>
+    <p>Price: {{vm.house.price_formatted}}</p>
+    </md-card-content>
+</md-card>
