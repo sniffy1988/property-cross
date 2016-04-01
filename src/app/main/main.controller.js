@@ -18,7 +18,7 @@ export class MainController {
           // leeds, london
           if(response.type === 'listings') {
             $rootScope.listings = response.data;
-            //$state.go('home')
+            $state.go('houses');
           } else {
           // lee
             this.locations = response.data;
