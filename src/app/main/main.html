@@ -1,20 +1,31 @@
 <div layout="vertical" layout-fill>
 
-  <md-content>
-    <header style="width: 100%;">
+  <md-content layout-fill>
+    <header>
       <acme-navbar creation-date="main.creationDate"></acme-navbar>
     </header>
 
-    <section class="jumbotron">
-      <div>
-        <input type="text" ng-model="main.searchQuery">
-        <button ng-click="main.search( main.searchQuery )">Go</button>
+    <div>
+      <div layout="row">
+        <div flex="33">
+          <md-input-container>
+            <label>Last Name</label>
+            <input name="lastName" ng-model="main.searchQuery">
+          </md-input-container>
+          <md-button ng-click="main.search( main.searchQuery )" class="md-raised">Go</md-button>
+        </div>
+        <div flex="66" ng-if="main.locations.length">
+          <p ng-repeat="loc in main.locations">{{loc.long_title}}</p>
+        </div>
       </div>
-      <div ng-if="main.locations.length">
-        <p ng-repeat="loc in main.locations">{{loc.long_title}}</p>
-      </div>
-    </section>
+      <!--<div layout="row">-->
+        <!--<div flex>First item in row</div>-->
+        <!--<div flex="20">Second item in row</div>-->
+      <!--</div>-->
+
+    </div>
 
   </md-content>
 
 </div>
+
