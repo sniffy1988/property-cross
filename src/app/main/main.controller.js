@@ -1,32 +1,59 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr, NestoriaAPI, $log, $rootScope, $state) {
+  constructor ($scope, $timeout, webDevTec, GeolocationService, toastr, NestoriaAPI, $log, $state) {
     'ngInject';
 
     this.awesomeThings = [];
     this.classAnimation = '';
     this.creationDate = 1458749947546;
     this.toastr = toastr;
+    this._geo = GeolocationService;
+    this._$log = $log;
 
     this.locations = [];
     this.activate($timeout, webDevTec);
 
+    this.errorMessage = '';
+
     this.search = function(text) {
+      this.clear();
+
       $log.debug('search ' + text);
       NestoriaAPI.get(text)
         .then( response => {
           $log.debug(response);
           // leeds, london
           if(response.type === 'listings') {
-            $rootScope.listings = response.data;
+
+            $scope.$emit('listings_here', {
+              listings: response.data
+            });
+
             $state.go('houses');
           } else {
           // lee
             this.locations = response.data;
           }
         }).catch((res) => {
-          $log.error(res);
+            switch(res.response.application_response_code) {
+              case '201':
+                this.errorMessage = 'Location not matched';
+                    break;
+              default:
+                this.errorMessage = 'Unable to detect current location. Please ensure location is turned on in your phone settings and try again';
+            }
         });
     };
+  }
+  searchLocation() {
+    this._geo.getCoords()
+      .then(res => {
+          this._$log.debug(res);
+          // NestoriaAPI.getByLocation
+        });
+  }
+  clear() {
+    this.errorMessage = '';
+    this.locations = [];
   }
   activate($timeout, webDevTec) {
     this.getWebDevTec(webDevTec);

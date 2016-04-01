@@ -13,9 +13,19 @@
             <input name="lastName" ng-model="main.searchQuery">
           </md-input-container>
           <md-button ng-click="main.search( main.searchQuery )" class="md-raised">Go</md-button>
+
+          <md-button ng-click="main.searchLocation()" class="md-raised">My Location</md-button>
         </div>
         <div flex="66" ng-if="main.locations.length">
-          <p ng-repeat="loc in main.locations">{{loc.long_title}}</p>
+          <md-button
+                  ng-repeat="loc in main.locations"
+                  ng-click="main.search( loc.place_name )"
+                  class="md-raised">
+            {{ loc.long_title }}
+          </md-button>
+        </div>
+        <div flex="66" ng-if="main.errorMessage.length">
+          <h4>{{ main.errorMessage }}</h4>
         </div>
       </div>
       <!--<div layout="row">-->
