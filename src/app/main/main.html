@@ -1,34 +1,41 @@
 <div layout="vertical" layout-fill>
 
-  <md-content>
+  <md-content layout-fill>
     <header>
       <acme-navbar creation-date="main.creationDate"></acme-navbar>
     </header>
 
-    <section class="jumbotron">
-      <h1>'Allo, 'Allo!</h1>
-      <p class="lead">
-        <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-        Always a pleasure scaffolding your apps.
-      </p>
-      <md-button class="md-raised animated infinite" ng-class="main.classAnimation" ng-click="main.showToastr()">Splendid Toastr</md-button>
-      <p>
-        With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-      </p>
-    </section>
+    <div>
+      <div layout="row">
+        <div flex="33">
+          <md-input-container>
+            <label>Last Name</label>
+            <input name="lastName" ng-model="main.searchQuery">
+          </md-input-container>
+          <md-button ng-click="main.search( main.searchQuery )" class="md-raised">Go</md-button>
 
-    <div class="techs" layout-align="center">
-      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-        <md-card-content>
-          <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-          <h3 class="md-title">{{ awesomeThing.title }}</h3>
-          <p>{{ awesomeThing.description }}</p>
-        </md-card-content>
-        <div class="md-action-buttons">
-          <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
+          <md-button ng-click="main.searchLocation()" class="md-raised">My Location</md-button>
         </div>
-      </md-card>
+        <div flex="66" ng-if="main.locations.length">
+          <md-button
+                  ng-repeat="loc in main.locations"
+                  ng-click="main.search( loc.place_name )"
+                  class="md-raised">
+            {{ loc.long_title }}
+          </md-button>
+        </div>
+        <div flex="66" ng-if="main.errorMessage.length">
+          <h4>{{ main.errorMessage }}</h4>
+        </div>
+      </div>
+      <!--<div layout="row">-->
+        <!--<div flex>First item in row</div>-->
+        <!--<div flex="20">Second item in row</div>-->
+      <!--</div>-->
+
     </div>
+
   </md-content>
 
 </div>
+
