@@ -12,9 +12,11 @@ import {PropertyController} from  '../app/property/property.controller';
 import GoComponent from '../app/components/go/go.component';
 import {HousesController} from '../app/houses/houses.controller';
 import {HouseDirective} from '../app/components/house/house.directive';
+import {FavesService} from '../app/components/favesservice/faves.service';
 
 import { NestoriaAPI } from '../app/components/nestoriaAPI/nestoria.service';
 import { GeolocationService } from '../app/components/geolocation/geolocation.service';
+import {BtnFave} from '../app/components/btnFave/btnFave';
 
 angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'toastr'])
     .constant('malarkey', malarkey)
@@ -33,4 +35,6 @@ angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitiz
     .directive('acmeHouse', HouseDirective)
     .component('acmeGo', GoComponent)
     .service('GeolocationService', GeolocationService)
+    .service('FavesService', FavesService)
+    .directive('btnFave', BtnFave)
 ;
