@@ -17,6 +17,7 @@ import {FavesService} from '../app/components/favesservice/faves.service';
 import { NestoriaAPI } from '../app/components/nestoriaAPI/nestoria.service';
 import { GeolocationService } from '../app/components/geolocation/geolocation.service';
 import {BtnFave} from '../app/components/btnFave/btnFave';
+import {FavesController} from '../app/Faves/favesContoller';
 
 angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'toastr'])
     .constant('malarkey', malarkey)
@@ -37,4 +38,5 @@ angular.module('propertycross', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitiz
     .service('GeolocationService', GeolocationService)
     .service('FavesService', FavesService)
     .directive('btnFave', BtnFave)
+    .controller('FavesController', FavesController)
 ;

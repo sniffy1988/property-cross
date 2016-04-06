@@ -18,7 +18,14 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
     templateUrl: 'app/houses/houses.html',
     controller: 'HousesController',
     controllerAs: 'houses'
-  });
+  })
+    .state('faves', {
+      url:'/faves',
+      templateUrl: 'app/Faves/fave.html',
+      controller: 'FavesController',
+      controllerAs: 'fave'
+    })
+  ;
 
   $urlRouterProvider.otherwise('/');
 }
